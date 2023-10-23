@@ -5,7 +5,15 @@
 
 int main() {
 
+    gopc_sets_obj my_sets;
 
-    return 0;
+    my_sets.regel_of_sum();
+
+    my_sets.regel_of_mul();
+
+    std::cout << "binom = " << my_sets.regel_of_binomial_coefficients() << std::endl;
     
+
+    my_sets.~gopc_sets_obj();
+    return 0;
 }
