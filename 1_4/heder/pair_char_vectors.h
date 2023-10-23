@@ -1,9 +1,42 @@
-#include "Pair_char_vectors.h"
+#pragma once
 
-Pair_char_vectors::Pair_char_vectors(const std::vector<char>& charVector, const std::string& binary)
+#include "a_libdm.h"
+
+class pair_char_vectors {
+public:
+
+    pair_char_vectors(const std::vector<char>& charVector);
+
+    pair_char_vectors();
+
+    void printLetterVector();
+
+    void printBinaryString();
+
+    pair_char_vectors addBinary(const pair_char_vectors& other);
+
+    pair_char_vectors denialBinary();
+
+    pair_char_vectors subtractBinary(const pair_char_vectors& other);
+
+    pair_char_vectors multiplyBinary(const pair_char_vectors& other);
+
+    void buildVectorFromBinary(const std::string& binaryCode);
+
+    std::string getBinaryString() const;
+
+private:
+    pair_char_vectors(const std::vector<char>& charVector, const std::string& binary);
+
+    std::vector<char> letterVector;
+    std::string binaryString;
+};
+
+
+pair_char_vectors::pair_char_vectors(const std::vector<char>& charVector, const std::string& binary)
     : letterVector(charVector), binaryString(binary) {};
 
-Pair_char_vectors::Pair_char_vectors(const std::vector<char>& charVector) {
+pair_char_vectors::pair_char_vectors(const std::vector<char>& charVector) {
     if (charVector.size() > 26) {
         std::cerr << "Error: Character vector exceeds 26 positions." << std::endl;
         return;
@@ -20,12 +53,12 @@ Pair_char_vectors::Pair_char_vectors(const std::vector<char>& charVector) {
     }
 };
 
-Pair_char_vectors::Pair_char_vectors() {
-letterVector = std::vector<char>();
-binaryString = std::string(26, '0');
+pair_char_vectors::pair_char_vectors() {
+    letterVector = std::vector<char>();
+    binaryString = std::string(26, '0');
 };
 
-void Pair_char_vectors::printLetterVector() {
+void pair_char_vectors::printLetterVector() {
     std::cout << "Letters in the vector: ";
     for (char letter : letterVector) {
         std::cout << letter << " ";
@@ -33,11 +66,11 @@ void Pair_char_vectors::printLetterVector() {
     std::cout << std::endl;
 };
 
-void Pair_char_vectors::printBinaryString() {
+void pair_char_vectors::printBinaryString() {
     std::cout << "Binary string: " << binaryString << std::endl;
 };
 
-Pair_char_vectors Pair_char_vectors::addBinary(const Pair_char_vectors& other) {
+pair_char_vectors pair_char_vectors::addBinary(const pair_char_vectors& other) {
     std::vector<char> resultVector;
     std::string resultBinaryString;
 
@@ -50,10 +83,10 @@ Pair_char_vectors Pair_char_vectors::addBinary(const Pair_char_vectors& other) {
         }
     }
 
-    return Pair_char_vectors(resultVector, resultBinaryString);
+    return pair_char_vectors(resultVector, resultBinaryString);
 };
 
-Pair_char_vectors Pair_char_vectors::denialBinary() {
+pair_char_vectors pair_char_vectors::denialBinary() {
     std::vector<char> resultVector;
     std::string resultBinaryString;
 
@@ -66,10 +99,10 @@ Pair_char_vectors Pair_char_vectors::denialBinary() {
         }
     }
 
-    return Pair_char_vectors(resultVector, resultBinaryString);
+    return pair_char_vectors(resultVector, resultBinaryString);
 };
 
-Pair_char_vectors Pair_char_vectors::subtractBinary(const Pair_char_vectors& other) {
+pair_char_vectors pair_char_vectors::subtractBinary(const pair_char_vectors& other) {
     std::vector<char> resultVector;
     std::string resultBinaryString;
 
@@ -82,10 +115,10 @@ Pair_char_vectors Pair_char_vectors::subtractBinary(const Pair_char_vectors& oth
         }
     }
 
-    return Pair_char_vectors(resultVector, resultBinaryString);
+    return pair_char_vectors(resultVector, resultBinaryString);
 };
 
-Pair_char_vectors Pair_char_vectors::multiplyBinary(const Pair_char_vectors& other) {
+pair_char_vectors pair_char_vectors::multiplyBinary(const pair_char_vectors& other) {
     std::vector<char> resultVector;
     std::string resultBinaryString;
 
@@ -98,10 +131,10 @@ Pair_char_vectors Pair_char_vectors::multiplyBinary(const Pair_char_vectors& oth
         }
     }
 
-    return Pair_char_vectors(resultVector, resultBinaryString);
+    return pair_char_vectors(resultVector, resultBinaryString);
 };
 
-void Pair_char_vectors::buildVectorFromBinary(const std::string& binaryCode) {
+void pair_char_vectors::buildVectorFromBinary(const std::string& binaryCode) {
     if (binaryCode.size() != 26) {
         std::cerr << "Error: Binary code must be 26 characters long." << std::endl;
         return;
@@ -117,6 +150,6 @@ void Pair_char_vectors::buildVectorFromBinary(const std::string& binaryCode) {
     binaryString = binaryCode;
 };
 
-std::string Pair_char_vectors::getBinaryString() const {
+std::string pair_char_vectors::getBinaryString() const {
     return binaryString;
 };
