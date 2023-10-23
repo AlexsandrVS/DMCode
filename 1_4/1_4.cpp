@@ -51,7 +51,6 @@ int main() {
     std::cout<<"\nTransitive warshall matrix:\n";
     matrix_transitive_warshall.print_matrix();
 
-
     matrix.create_matrix_power();
     matrix_reflexivity.create_matrix_power();
     matrix_symmetric.create_matrix_power();

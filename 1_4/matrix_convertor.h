@@ -60,7 +60,7 @@ public:
 
     matrix_converter matrix_modification_transitive() const {
         if (rows != cols) {
-            throw std::invalid_argument("The matrix must be square to compute transitive closure using matrix multiplication and addition.");
+            throw std::invalid_argument("The matrix must be square to compute transitive new_matrix using matrix multiplication and addition.");
         }
 
         matrix_converter new_matrix = *this; // Создаем копию исходной матрицы
