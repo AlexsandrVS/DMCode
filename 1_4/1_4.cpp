@@ -5,15 +5,17 @@
 
 int main() {
 
-    gopc_sets_obj my_sets;
+    std::vector<char> vector_k(5, 'R');
+    std::vector<char> vector_n(18, 'I');
 
-    my_sets.regel_of_sum();
+    gopc_sets_obj sets_obj(vector_k.size(), vector_k, vector_n.size(), vector_n);
 
-    my_sets.regel_of_mul();
+    std::cout << sets_obj.get_power_k() << std::endl;
+    std::cout << sets_obj.get_power_n() << std::endl;
 
-    std::cout << "binom = " << my_sets.regel_of_binomial_coefficients() << std::endl;
-    
+    sets_obj.regel_of_sum();
+    sets_obj.regel_of_mul();
+    sets_obj.regel_of_binomial_coefficients();
 
-    my_sets.~gopc_sets_obj();
     return 0;
 }

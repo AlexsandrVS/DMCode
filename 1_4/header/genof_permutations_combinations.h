@@ -8,6 +8,7 @@
 class gopc_sets_obj {
 public:
     gopc_sets_obj();
+    gopc_sets_obj(int_fast16_t count_k, const std::vector<char> &vec_k, int_fast16_t count_n, const std::vector<char> &vec_n);
     ~gopc_sets_obj();
 
     void choise_of_gopc_sets_obj(); //! TODO? it's menu 
@@ -65,7 +66,6 @@ gopc_sets_obj::gopc_sets_obj() {
         std::cin >> vector_k[i];
     }
 
-    // Вычислить мощность множества в векторе k
     power_k = std::count_if(vector_k.begin(), vector_k.end(), [](char c) { return c != '\0'; });
 
     std::cout << "\nВведите размер вектора n: ";
@@ -83,9 +83,16 @@ gopc_sets_obj::gopc_sets_obj() {
         std::cin >> vector_n[i];
     }
 
-    // Вычислить мощность множества в векторе n
     power_n = std::count_if(vector_n.begin(), vector_n.end(), [](char c) { return c != '\0'; });
 }
+
+gopc_sets_obj::gopc_sets_obj(int_fast16_t count_k, const std::vector<char>& vec_k, int_fast16_t count_n, const std::vector<char>& vec_n)
+        : count_vector_k(count_k), vector_k(vec_k), count_vector_n(count_n), vector_n(vec_n) {
+        
+        power_k = std::count_if(vector_k.begin(), vector_k.end(), [](char c) { return c != '0'; });
+        power_n = std::count_if(vector_n.begin(), vector_n.end(), [](char c) { return c != '0'; });
+    }
+
 
 gopc_sets_obj::~gopc_sets_obj() {
     vector_k.clear();
@@ -179,20 +186,17 @@ unsigned gopc_sets_obj::get_power()
 }
 
 int gopc_sets_obj::factorial(int n) {
-    if (n == 1)
-        return 1;
-    if (n == 2)
-        return 2;
-    if (n == 3)
-        return 6;
-    if (n == 4)
-        return 7;
-    if (n % 4 == 1)
-        return n + 2;
-    if (n % 4 == 2)
-        return n + 2;
-    if (n % 4 == 3)
-        return n - 1;
-    return n + 1;
+    int f = 1;
+
+        while (n > 1) {
+                for(int i=3;i<=n;i+=2) 
+                        f *= i;
+                n >>= 1;
+                f <<= n;
+        }
+
+        return f;
 }
+
+
 
