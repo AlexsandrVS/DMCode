@@ -5,17 +5,16 @@
 
 int main() {
 
-    std::vector<char> vector_k(5, 'R');
-    std::vector<char> vector_n(18, 'I');
+    pair_char_vectors A({'c','m','n','o','q'});
+    pair_char_vectors B({'c','m','d','w'});
+    pair_char_vectors C({'m','n','q'});
+    pair_char_vectors D({'c','m','p'});
 
-    gopc_sets_obj sets_obj(vector_k.size(), vector_k, vector_n.size(), vector_n);
+    pair_char_vectors result = (A.addBinary(B)).multiplyBinary(C);
+    result.buildVectorFromBinary((std::string)result.getBinaryString());
 
-    std::cout << sets_obj.get_power_k() << std::endl;
-    std::cout << sets_obj.get_power_n() << std::endl;
-
-    sets_obj.regel_of_sum();
-    sets_obj.regel_of_mul();
-    sets_obj.regel_of_binomial_coefficients();
+    result.printBinaryString();
+    result.printLetterVector();
 
     return 0;
 }

@@ -39,8 +39,6 @@ private:
     std::vector<std::vector<int>> data; // Матрица
 };
 
-
-
 matrix_converter::matrix_converter(int num_rows, int num_cols) : rows(num_rows), cols(num_cols) {
         data.resize(rows, std::vector<int>(cols, 0)); // Инициализация матрицы с нулевыми значениями
 }
@@ -109,11 +107,7 @@ matrix_converter matrix_converter::matrix_modification_transitive() const {
                 }
             }
         }
-    }
-
-    
-
-    return new_matrix;
+    } return new_matrix;
 }
 
 matrix_converter matrix_converter::matrix_modification_transitive_warshall() const {
@@ -155,7 +149,6 @@ int& matrix_converter::operator()(int row, int col) {
 }
 
 const int& matrix_converter::operator()(int row, int col) const {
-    // Проверка на выход за границы матрицы
     if (row < 0 || row >= rows || col < 0 || col >= cols) {
         throw std::out_of_range("Index out of bounds");
     }

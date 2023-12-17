@@ -16,6 +16,7 @@ public:
     int regel_of_sum();
     int regel_of_mul();
 
+
     int regel_of_placement_n_by_k_elements(); //! TODO
     int regel_of_placement_n_by_k_with_repetition(); //! TODO
 
@@ -46,8 +47,9 @@ private:
     short power_n{};
 
     unsigned power{};
-    
 };
+
+
 
 gopc_sets_obj::gopc_sets_obj() {
     std::cout << "Введите размер вектора k: ";
@@ -85,6 +87,7 @@ gopc_sets_obj::gopc_sets_obj() {
 
     power_n = std::count_if(vector_n.begin(), vector_n.end(), [](char c) { return c != '\0'; });
 }
+
 
 gopc_sets_obj::gopc_sets_obj(int_fast16_t count_k, const std::vector<char>& vec_k, int_fast16_t count_n, const std::vector<char>& vec_n)
         : count_vector_k(count_k), vector_k(vec_k), count_vector_n(count_n), vector_n(vec_n) {
